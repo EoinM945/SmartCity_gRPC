@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "grpc.services.building";
+option java_outer_classname = "BuildingServiceImpl";
+
+package Building;
+
+service BuildingService {
+	//Unary RPC S
+	rpc switchDevices (BuildingRequest) returns (BuildingResponse) {};
+	
+	//Bidirectional
+	rpc printList(stream PrinterRequest) returns (stream PrinterResponse) {};
+}
+
+message BuildingRequest {
+	bool devices = 1;
+}
+
+message BuildingResponse {
+	bool devices = 1;
+}
+
+message PrinterRequest {
+    string pList = 1;
+}
+
+message PrinterResponse {
+    string pList = 1;
+}
